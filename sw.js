@@ -19,7 +19,7 @@ self.addEventListener("fetch", event => {
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
 
-  const isImage = request.destination === "image" || /\\.(?:avif|gif|jpe?g|png|webp|svg)$/i.test(url.pathname);
+  const isImage = request.destination === "image" || /\.(?:avif|gif|jpe?g|png|webp|svg)$/i.test(url.pathname);
   if (!isImage) return;
 
   event.respondWith((async () => {
@@ -28,7 +28,7 @@ self.addEventListener("fetch", event => {
 
     const refresh = fetch(request).then(response => {
       if (response && (response.ok || response.type === "opaque")) {
-        cache.put(request, response.clone());
+        await cache.put(request, response.clone()).catch(() => {});
       }
       return response;
     }).catch(() => cached);
