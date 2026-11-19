@@ -269,4 +269,10 @@ if(searchInput.value.trim()) searchItems();
 function openCat(id){window.currentCat=id;let c=data.find(x=>x.id===id);detailTitle.textContent=nm(c);if(id==='dessert'){items.innerHTML='<div class="desserts">'+menuItems(c).map(([ar,en,p,img])=>`<article class="dessert"><img src="${pics[img]}" loading="lazy" decoding="async" alt="${lang==='ar'?ar:(en||'')}"><div>${lang==='ar'?ar:(en||'')}</div></article>`).join('')+'</div>'}else{items.innerHTML='<div class="list">'+menuItems(c).map(([ar,en,p])=>`<div class="item"><span>${lang==='ar'?ar:(en||'')}</span><b class="price">${p==null?'':p+' '+(lang==='ar'?'ج.م':'EGP')}</b></div>`).join('')+'</div>'}go('detail')}
 function searchItems(){let q=searchInput.value.trim().toLowerCase(),out=[];data.forEach(c=>menuItems(c).forEach(it=>{if(q&&(it[0].toLowerCase().includes(q)||it[1].toLowerCase().includes(q)))out.push([it,c])}));searchResults.innerHTML=out.map(([it,c])=>`<div class="item"><span>${lang==='ar'?it[0]:(it[1]||'')}<small style="display:block;color:#9a8876;margin-top:4px">${nm(c)}</small></span><b class="price">${it[2]==null?'':it[2]+' '+(lang==='ar'?'ج.م':'EGP')}</b></div>`).join('')||(lang==='en'?'<div class="item">No results found</div>':'<div class="item">لا توجد نتائج</div>')}
 draw();
+</script><script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js").catch(() => {});
+  }, { once: true });
+}
 </script></body></html>
