@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#20130d">
+<link id="hadota-speed-preload" rel="preconnect" href="https://images.unsplash.com" crossorigin><link rel="preload" as="image" href="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1100&q=85" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@500;600;700;800&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@600;700;800&family=Cormorant+Garamond:wght@500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+<title>Hadota Cafe</title>
+<style>
+
+:root{--gold:#d2ad68;--gold2:#efd9a7;--cream:#f7ecd5;--muted:#c2ad89}
+*{box-sizing:border-box}body{margin:0;background:#160903;color:var(--cream);font-family:Tahoma,Arial,sans-serif}
+.app{max-width:520px;margin:auto;min-height:100vh;background:radial-gradient(circle at 50% 0,#3a1d0d 0,#211006 48%,#160903 100%);padding-bottom:90px}
+.top{padding:13px 18px 11px;background:rgba(27,10,4,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);position:sticky;top:0;z-index:4;border-bottom:1px solid rgba(210,173,104,.38);box-shadow:0 8px 28px #0003}
+.toprow{display:flex;align-items:center;justify-content:space-between}.brand{direction:rtl;font-size:34px;font-weight:800;color:#f2dfb9;text-shadow:none;line-height:1.25}.brand.arabic-brand{font-family:'Cairo',Tahoma,Arial,sans-serif;font-size:32px;font-weight:800;letter-spacing:1.2px;text-shadow:none}.brand.english-brand{font-family:'Playfair Display',Georgia,serif;font-size:36px;font-style:italic;font-weight:700;letter-spacing:.7px;text-shadow:none}.tag{font-size:9px;letter-spacing:3px;color:#b99759;text-align:center;margin-top:3px}
+.lang{border:1px solid #98743d;border-radius:20px;background:#2a160b;color:#f5dfb5;padding:7px 11px;font-size:11px}
+.hero{margin:15px 15px 21px;border-radius:17px;min-height:175px;padding:22px 19px;position:relative;overflow:hidden;background:linear-gradient(90deg,#1a0904ed 0%,#1a0904b8 48%,#1a09043b 100%),url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1100&q=85') center/cover;border:1px solid #8d6a35}
+.kicker{color:var(--gold);font-size:10px;letter-spacing:2px}.hero h1{font-size:23px;line-height:1.55;margin:9px 0 5px;color:#f6e5c2}.hero p{font-size:12px;line-height:1.8;color:#d8c29d;max-width:265px;margin:0}
+.section-head{display:flex;align-items:end;justify-content:space-between;margin:0 18px 13px}.section-head h2{font-size:19px;margin:0;color:#f0dfbd}.section-head small{font-size:10px;color:var(--gold)}
+.cats{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 15px}
+.cat{height:158px;border:1px solid rgba(210,173,104,.48);border-radius:16px;overflow:hidden;position:relative;text-align:right;padding:0;background:#291509;color:#fff1d5;box-shadow:0 10px 26px #0006;cursor:pointer;transition:transform .25s,border-color .25s}
+.cat:active{transform:scale(.985)}
+.cat .photo{position:absolute;inset:0;background:linear-gradient(0deg,rgba(18,8,3,.94) 0%,rgba(18,8,3,.48) 42%,rgba(18,8,3,.04) 100%);display:flex;align-items:flex-end;padding:15px}
+.cat .symbol{display:none}
+.cat b{font-size:15px;position:relative;z-index:1;color:#f7e8ca;font-weight:600;text-shadow:0 2px 8px #000}.cat small{display:block;font-size:9px;letter-spacing:1.7px;color:#ddc79f;margin-top:5px}
+.promo{margin:21px 15px 0;border-radius:13px;background:linear-gradient(135deg,#3a1e0f,#241107);padding:14px 16px;display:flex;align-items:center;justify-content:space-between;border:1px solid #80602f}.promo strong{font-size:13px;color:#f1dfbd}.promo span{font-size:10px;color:#c4aa7f;display:block;margin-top:5px}.promo i{font-style:normal;font-size:29px;color:#d9b66f}
+.view{display:none;animation:fade .22s}.view.active{display:block}.section-signature{margin:18px 18px 15px;padding:11px 8px 12px;text-align:center;border-top:1px solid rgba(210,173,104,.22);border-bottom:1px solid rgba(210,173,104,.22);background:linear-gradient(90deg,transparent,rgba(210,173,104,.055),transparent)}.section-signature span{display:block;font-size:29px;color:rgba(242,223,185,.98);text-shadow:none;line-height:1.3}.section-signature span.arabic-brand{font-family:'Cairo',Tahoma,Arial,sans-serif;font-size:29px;font-weight:800;letter-spacing:1.2px;text-shadow:none}.section-signature span.english-brand{font-family:'Playfair Display',Georgia,serif;font-size:32px;font-style:italic;font-weight:700;letter-spacing:.7px;text-shadow:none}.section-signature i{display:block;margin-top:4px;font-style:normal;font-size:8px;letter-spacing:2.2px;color:rgba(210,173,104,.72)}@keyframes fade{from{opacity:.5;transform:translateY(6px)}to{opacity:1;transform:none}}
+.back{margin:15px;border:1px solid #8b6834;background:#2d170b;color:#e9d2a5;border-radius:25px;padding:9px 14px;font-size:12px}
+.detail-hero{height:120px;margin:0 15px 14px;border-radius:13px;background:linear-gradient(0deg,#1c0e08c9,#1c0e0840),linear-gradient(135deg,#9a6d3e,#2c160a);display:flex;align-items:end;padding:15px;color:white;border:1px solid #98713b}.detail-hero h1{margin:0;font-size:21px;color:#f6e5c2}
+.list{margin:0 15px;border:1px solid #80602f;border-radius:13px;overflow:hidden;background:#241107}
+.item{padding:13px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #51351b;gap:10px}.item:last-child{border:0}.item span{font-size:13px;color:#f2e3c7}.price{color:#e0bd76;font-weight:bold;white-space:nowrap;font-size:13px}
+.desserts{display:grid;grid-template-columns:1fr 1fr;gap:11px;padding:0 15px}.dessert{border-radius:13px;overflow:hidden;background:#2a150a;border:1px solid #92703b}.dessert img{width:100%;aspect-ratio:1.2/1;object-fit:cover;display:block}.dessert div{padding:9px;text-align:center;font-size:13px;font-weight:bold;color:#f0dfbd}
+.searchbox{margin:15px;width:calc(100% - 30px);padding:12px;border:1px solid #8b6834;border-radius:11px;background:#241107;color:#f5e8d0;font-size:14px}.searchbox::placeholder{color:#bda783}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:#1b0b05f5;border-top:1px solid #80602f;z-index:5}.bottomin{max-width:520px;margin:auto;display:flex;justify-content:space-around;padding:8px 4px calc(8px + env(safe-area-inset-bottom))}
+.bottom button{border:0;background:none;color:#bda783;font-size:10px;min-width:62px}.bottom button em{font-style:normal;display:block;font-size:19px;margin-bottom:3px;color:#c8a15d}.bottom button.on{color:#f0d69e;font-weight:bold}
+
+/* Experimental progressive reveal: keep the original design, reveal cards smoothly as they enter view. */
+.cat{opacity:.72;transform:translateY(12px);transition:opacity .55s ease,transform .55s ease,filter .55s ease}
+.cat.in-view{opacity:1;transform:translateY(0)}
+.cat:not(.image-ready){background-color:#291509}
+.cat.image-ready{filter:saturate(1.02)}
+@media (prefers-reduced-motion:reduce){.cat{transition:none;transform:none;opacity:1}}
+</style>
+<style id="hadota-final-demo-adjustments">
+/* Slightly larger primary logo in the sticky top header */
+#brandName{font-size:42px!important;line-height:1.18!important}
+.brand.arabic-brand,.section-signature span.arabic-brand{
+  font-family:'Aref Ruqaa',serif!important;
+  font-weight:700!important;
+  letter-spacing:0!important;
+  font-size:37px!important;
+  line-height:1.25!important;
+}
+</style>
+
+<style id="hadota-english-only-font">
+/* English typography only — Arabic remains on the original Aref Ruqaa font */
+.brand.english-brand,
+.tag,
+.cat small,
+.section-signature .english-brand,
+.eyebrow,
+[lang="en"],
+[data-lang="en"] {
+  font-family:'Cormorant Garamond',Georgia,serif !important;
+  letter-spacing:2px;
+}
+.brand.english-brand {font-weight:700;letter-spacing:1.5px}
+</style>
+
+
+<style id="hadota-brand-menu-refinement-v5">
+/* Refined premium typography and slightly larger brand/menu labels */
+.brand.arabic-brand,
+.section-signature span.arabic-brand {
+  font-family:'Aref Ruqaa',serif !important;
+  font-size:40px !important;
+  font-weight:700 !important;
+  letter-spacing:0 !important;
+  line-height:1.28 !important;
+}
+.brand.english-brand {
+  font-family:'Cormorant Garamond',Georgia,serif !important;
+  font-size:44px !important;
+  font-weight:700 !important;
+  font-style:normal !important;
+  letter-spacing:1.8px !important;
+  line-height:1.16 !important;
+}
+.section-signature span.english-brand {
+  font-family:'Cormorant Garamond',Georgia,serif !important;
+  font-size:35px !important;
+  font-weight:700 !important;
+  font-style:normal !important;
+  letter-spacing:1.5px !important;
+}
+.bottom button span[data-en="Menu"],
+.bottom button span[data-ar="الأقسام"] {
+  font-family:'Cormorant Garamond','Aref Ruqaa',serif !important;
+  font-size:13px !important;
+  font-weight:700 !important;
+}
+</style>
+
+
+<style id="hadota-font-size-v6">
+/* Updated typography: clean modern Arabic + elegant English serif */
+.brand.arabic-brand, .section-signature span.arabic-brand {
+  font-family:'Alexandria',sans-serif !important;
+  font-size:44px !important; font-weight:700 !important; letter-spacing:-1px !important; line-height:1.3 !important;
+}
+.brand.english-brand {
+  font-family:'Cormorant Garamond',Georgia,serif !important;
+  font-size:49px !important; font-weight:700 !important; font-style:normal !important; letter-spacing:2px !important; line-height:1.12 !important;
+}
+.section-signature span.english-brand {
+  font-family:'Cormorant Garamond',Georgia,serif !important;
+  font-size:40px !important; font-weight:700 !important; letter-spacing:1.8px !important; line-height:1.2 !important;
+}
+.bottom button span[data-en="Menu"], .bottom button span[data-ar="الأقسام"] {
+  font-family:'Alexandria','Cormorant Garamond',sans-serif !important;
+  font-size:15px !important; font-weight:700 !important;
+}
+@media (max-width:380px) { .brand.arabic-brand{font-size:40px!important}.brand.english-brand{font-size:45px!important} }
+</style>
+
+<style id="hadota-v7-final-tweaks">
+/* Remove the repeated Hadota signature lower on the page; keep the top brand */
+.section-signature { display:none !important; }
+/* New, more distinctive English lettering and a modest size increase */
+.brand.english-brand {
+  font-family:'Playfair Display',Georgia,serif !important;
+  font-size:53px !important; font-weight:700 !important;
+  font-style:normal !important; letter-spacing:1.2px !important;
+  line-height:1.12 !important;
+}
+/* Slightly larger navigation and menu typography throughout */
+.bottom button span[data-en="Menu"], .bottom button span[data-ar="الأقسام"] {
+  font-family:'Alexandria',sans-serif !important; font-size:16px !important;
+  font-weight:700 !important;
+}
+.section-head h2 { font-size:19px !important; }
+.item span, .price { font-size:14px !important; }
+.dessert div, .cat strong, .cat span, .promo strong { font-size:14px !important; }
+.searchbox { font-size:15px !important; }
+.detail-hero h1 { font-size:23px !important; }
+@media (max-width:380px) { .brand.english-brand { font-size:49px !important; } }
+</style>
+
+
+<style id="hadota-v8-brand-adjustment">
+/* Slightly enlarge the Arabic brand word while preserving the approved style */
+#brandName.arabic-brand { font-size:49px !important; line-height:1.22 !important; }
+@media (max-width:380px) { #brandName.arabic-brand { font-size:45px !important; } }
+</style>
+
+<style id="hadota-v8-readability-refinement">
+/* Small readability increase: menu text and hero English kicker */
+.section-head h2 { font-size:20px !important; }
+.item span, .price { font-size:15px !important; }
+.dessert div, .cat strong, .cat span, .promo strong { font-size:15px !important; }
+.cat b { font-size:16px !important; }
+.promo span { font-size:11px !important; }
+.hero .kicker { font-size:12px !important; font-weight:700 !important; letter-spacing:1.25px !important; color:#e0c38e !important; line-height:1.5 !important; }
+@media (max-width:380px) {
+  .item span, .price, .dessert div, .cat strong, .cat span, .promo strong { font-size:14.5px !important; }
+  .hero .kicker { font-size:11px !important; letter-spacing:1px !important; }
+}
+</style>
+
+<style id="hadota-cocktail-feature">
+.mix-feature{margin:0 15px 14px;border-radius:14px;overflow:hidden;background:#2a150a;border:1px solid #92703b}
+.mix-feature img{width:100%;aspect-ratio:1.35/1;object-fit:cover;display:block}
+.mix-feature div{padding:10px;text-align:center;font-size:15px;font-weight:bold;color:#f0dfbd}
+</style>
+
+
+<style id="hadota-arabic-logo-font-v3">
+/* Arabic interface: use the logo-inspired Alexandria typeface. English typography remains the original Menu2 typography. */
+html[lang="ar"] body,
+html[lang="ar"] body button,
+html[lang="ar"] body input,
+html[lang="ar"] body select,
+html[lang="ar"] body textarea,
+html[lang="ar"] .cat b,
+html[lang="ar"] .cat small,
+html[lang="ar"] .brand.arabic-brand,
+html[lang="ar"] .signature-name {
+  font-family: 'Alexandria', Tahoma, Arial, sans-serif !important;
+}
+html[lang="ar"] .cat b { font-weight: 700 !important; }
+html[lang="ar"] .cat small { font-weight: 600 !important; }
+html[lang="en"] body, html[lang="en"] body button, html[lang="en"] body input, html[lang="en"] body select, html[lang="en"] body textarea {
+  font-family: Tahoma, Arial, sans-serif;
+}
+</style>
+</head>
+<body><div class="app">
+<header class="top"><div class="toprow"><button class="lang" onclick="toggleLang()" id="langBtn">English</button><div style="text-align:center"><div class="brand" id="brandName">حدوته</div><div class="tag">COFFEE · DESSERT · MOMENTS</div><div style="height:1px;width:105px;margin:7px auto 0;background:linear-gradient(90deg,transparent,#cda45d,transparent)"></div></div><span style="font-size:22px;color:#e4c58e">✦</span></div></header>
+<main>
+<section id="home" class="view active">
+<div class="hero"><div class="kicker">A LITTLE MOMENT OF JOY</div><h1 id="heroTitle">حكايتك الحلوة تبدأ هنا</h1></div>
+<div class="section-head"><h2 id="categoriesHeading">اكتشف الأقسام</h2><small id="allLabel" onclick="go('categories')" style="cursor:pointer">عرض الكل ←</small></div>
+<div class="cats" id="homeCats"></div>
+
+</section>
+<section id="categories" class="view"><div class="section-signature"><span class="signature-name">حدوته</span><i>COFFEE · DESSERT · MOMENTS</i></div><button class="back" onclick="go('home')" id="backCats">← الرئيسية</button><div class="section-head"><h2 id="allCatsTitle">كل الأقسام</h2></div><div class="cats" id="allCats"></div></section>
+<section id="detail" class="view"><div class="section-signature"><span class="signature-name">حدوته</span><i>COFFEE · DESSERT · MOMENTS</i></div><button class="back" onclick="go('categories')" id="backDetail">← رجوع</button><div class="detail-hero"><h1 id="detailTitle"></h1></div><div id="items"></div></section>
+<section id="searchView" class="view"><div class="section-signature"><span class="signature-name">حدوته</span><i>COFFEE · DESSERT · MOMENTS</i></div><div class="section-head" style="margin-top:20px"><h2 id="searchTitle">ابحث في المنيو</h2></div><input class="searchbox" id="searchInput" placeholder="اكتب اسم الصنف..." oninput="searchItems()"><div class="list" id="searchResults"></div></section>
+</main></div>
+<nav class="bottom"><div class="bottomin">
+<button class="on" data-go="home" onclick="nav('home',this)"><em>⌂</em><span data-ar="الرئيسية" data-en="Home">الرئيسية</span></button>
+<button data-go="categories" onclick="nav('categories',this)"><em>▦</em><span data-ar="الأقسام" data-en="Menu">الأقسام</span></button>
+<button data-go="searchView" onclick="nav('searchView',this)"><em>⌕</em><span data-ar="بحث" data-en="Search">بحث</span></button>
+</div></nav>
+<script>
+// Resolve page elements explicitly instead of relying on browser-created global ID variables.
+const homeCats = document.getElementById('homeCats');
+const allCats = document.getElementById('allCats');
+const detailTitle = document.getElementById('detailTitle');
+const items = document.getElementById('items');
+const langBtn = document.getElementById('langBtn');
+const brandName = document.getElementById('brandName');
+const heroTitle = document.getElementById('heroTitle');
+const categoriesHeading = document.getElementById('categoriesHeading');
+const allLabel = document.getElementById('allLabel');
+const allCatsTitle = document.getElementById('allCatsTitle');
+const backCats = document.getElementById('backCats');
+const backDetail = document.getElementById('backDetail');
+const searchTitle = document.getElementById('searchTitle');
+const searchInput = document.getElementById('searchInput');
+const searchResults = document.getElementById('searchResults');
+const data=[{"id": "cold", "ar": "المشروبات الباردة", "en": "Cold Drinks", "icon": "🧊", "sub": "COLD & REFRESHING", "items": [["مياه صغيرة", "Small Water", 30], ["كولا", "Cola", 70], ["كولا زيرو", "Cola Zero", 70], ["فانتا", "Fanta", 70], ["سبرايت", "Sprite", 70], ["شويبس (أناناس، خوخ، رمان، ليمون نعناع)", "Schweppes (Pineapple, Peach, Pomegranate, Lemon Mint)", 70], ["تونك", "Tonic", 70], ["مياه فوارة نستله", "Nestlé Sparkling Water", 70]]}, {"id": "juice", "ar": "عصائر فريش", "en": "Fresh Juices", "icon": "🍹", "sub": "FRESHLY SQUEEZED", "items": [["مانجو", "Mango", 120], ["كيوي", "Kiwi", 145], ["فراولة", "Strawberry", 120], ["جوافة", "Guava", 120], ["كركديه بارد", "Iced Hibiscus", 110], ["ليمون", "Lemon", 110], ["ليمون نعناع", "Lemon Mint", 120], ["رمان", "Pomegranate", 145], ["برتقال", "Orange", 120], ["تفاح", "Apple", 110], ["فراولة حليب", "Strawberry with Milk", 130], ["جوافة حليب", "Guava with Milk", 130], ["موز حليب", "Banana with Milk", 130], ["بطيخ", "Watermelon", 120]]}, {"id": "coffee", "ar": "القهوة", "en": "Coffee", "icon": "☕", "sub": "FRESHLY BREWED", "items": [["قهوة تركي", "Turkish Coffee", 60], ["قهوة تركي بالحبهان", "Turkish Coffee with Cardamon", 60], ["قهوة تركي بالحليب", "Turkish Coffee with Milk", 70], ["قهوة بندق", "Hazelnut Coffee", 70], ["إسبريسو", "Espresso", 60], ["ميكاتو", "Macchiato", 70], ["كابتشينو", "Cappuccino", 70], ["كافية لاتيه", "Caffè Latte", 70], ["كورتادو", "Cortado", 70], ["فلات وايت", "Flat White", 70], ["أمريكان كوفي", "Americano", 60], ["نسكافيه سادة", "Nescafé (Plain)", 60], ["نسكافيه حليب", "Nescafé with Milk", 70], ["آيس كوفي", "Iced Coffee", 120], ["فرابيه", "Frappé", 150], ["آيس موكا", "Iced Mocha", 150]]}, {"id": "hot", "ar": "المشروبات الساخنة", "en": "Hot Drinks", "icon": "🍵", "sub": "WARM & COMFORTING", "items": [["هوت سيدر", "Hot Cider", 75], ["هوت شوكليت", "Hot Chocolate", 75], ["سحلب", "Sahlab", 75], ["قرفة", "Cinnamon", 60], ["جنزبيل", "Ginger", 60], ["قرفة بالجنزبيل", "Cinnamon with Ginger", 60], ["قرفة بالجنزبيل حليب", "Cinnamon & Ginger with Milk", 70], ["شاي أحمر", "Black Tea", 60], ["شاي نعناع", "Mint Tea", 60], ["شاي حليب", "Tea with Milk", 70], ["كركديه سخن", "Hot Hibiscus", 60], ["حلبة", "Fenugreek", 60], ["حلبة حليب", "Fenugreek with Milk", 70], ["شاي براد فرد", "Bedouin Tea (1 Person)", 60], ["شاي براد 2 فرد", "Bedouin Tea (2 Persons)", 120]]}, {"id": "mix", "ar": "كوكتيلات وميلك شيك", "en": "Cocktails & Milkshakes", "icon": "🥤", "sub": "MIXED FAVORITES", "items": [["هافانا", "Havana", 145], ["فلوريدا", "Florida", 145], ["موهيتو", "Mojito", 120], ["ميلك شيك أوريو", "Oreo Milkshake", 145], ["ميلك شيك فانيليا", "Vanilla Milkshake", 145], ["ميلك شيك مانجو", "Mango Milkshake", 145], ["ميلك شيك فراولة", "Strawberry Milkshake", 145], ["ميلك شيك شوكولاتة", "Chocolate Milkshake", 145]]}, {"id": "shisha", "ar": "ركن الشيشة", "en": "Shisha", "icon": "♨️", "sub": "SHISHA FLAVORS", "items": [["شيشة تفاح النخلة", "Al Nakhla Apple Shisha", 200], ["شيشة معسل الفاخر", "Al Fakher Shisha", 350], ["شيشة معسل قص وسلوم", "Qass & Salloum Shisha", 50]]}, {"id": "dessert", "ar": "الحلويات", "en": "Desserts", "icon": "🍰", "sub": "DESSERTS", "items": [["تشيز كيك", "Cheesecake", null, "cheesecake"], ["كرواسون", "Croissant", null, "croissant"], ["تيراميسو", "Tiramisu", null, "tiramisu"], ["أوريو كيك", "Oreo Cake", null, "oreo"], ["كاروت كيك", "Carrot Cake", null, "carrot"], ["ريد فيلفيت", "Red Velvet", null, "redvelvet"]]}];
+const pics={"mangoKiwiBanana": "./assets/menu/mangoKiwiBanana.png","cheesecake": "./assets/menu/cheesecake.jpg", "croissant": "./assets/menu/croissant.jpg", "tiramisu": "./assets/menu/tiramisu.jpg", "oreo": "./assets/menu/oreo.jpg", "carrot": "./assets/menu/carrot.jpg", "redvelvet": "./assets/menu/redvelvet.jpg"};
+let lang='ar';
+function applyBrandFont(){document.querySelectorAll('.brand,.signature-name').forEach(el=>{el.classList.toggle('arabic-brand',lang==='ar');el.classList.toggle('english-brand',lang==='en')})}
+applyBrandFont();
+const names={ar:{cold:'المشروبات الباردة',juice:'العصائر الفريش',coffee:'القهوة',hot:'المشروبات الساخنة',mix:'الكوكتيلات والميلك شيك',shisha:'ركن الشيشة',dessert:'الحلويات'},en:{cold:'Cold Drinks',juice:'Fresh Juices',coffee:'Coffee',hot:'Hot Drinks',mix:'Cocktails & Milkshakes',shisha:'Shisha Corner',dessert:'Desserts'}};
+const icons={cold:'🧊',juice:'🍹',coffee:'☕',hot:'🍵',mix:'🥤',shisha:'♨️',dessert:'🍰'};
+const descriptions={cold:'COLD & REFRESHING',juice:'FRESH JUICES',coffee:'COFFEE',hot:'HOT DRINKS',mix:'MIXED FAVORITES',shisha:'SHISHA FLAVORS',dessert:'DESSERTS'};
+function nm(c){return lang==='en'?(c.en||names.en[c.id]||''):(c.ar||names.ar[c.id]||'')}
+function menuItems(c){return lang==='en'?c.items.filter(it=>!['Qass & Salloum Shisha','Fenugreek','Fenugreek with Milk'].includes(it[1])):c.items}
+const categoryPhotos={
+cold:'./assets/menu/category-cold.jpg',
+juice:'https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=1000&q=90',
+coffee:'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=90',
+hot:'./assets/menu/category-hot.png',
+mix:pics.mangoKiwiBanana,
+shisha:'./assets/menu/category-shisha.jpg',
+dessert:'https://canelitacheesecake.com/cdn/shop/files/Trozodepasteldeterciopelorojo.png?v=1776101792'
+};
+function card(c){let img=categoryPhotos[c.id]||'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=90';let title=lang==='en'?(c.en||names.en[c.id]||''):(c.ar||names.ar[c.id]||'');let subtitle=lang==='en'?(descriptions[c.id]||''):'';return `<button class="cat" data-bg="${img}" onclick="openCat('${c.id}')" style="background-image:linear-gradient(0deg,#160802e8 0%,#16080220 78%);background-size:cover;background-position:center;background-repeat:no-repeat"><div class="photo"><div><b>${title}</b>${subtitle?`<small>${subtitle}</small>`:''}</div></div></button>`}
+function loadCategoryImages(){
+  const cards=[...document.querySelectorAll('.cat[data-bg]')];
+  if(!('IntersectionObserver' in window)){
+    cards.forEach(el=>{const im=new Image();im.onload=()=>{el.style.backgroundImage="linear-gradient(0deg,#160802e8 0%,#16080220 78%),url('"+el.dataset.bg+"')";el.classList.add('image-ready');el.removeAttribute('data-bg')};im.src=el.dataset.bg});
+    return;
+  }
+  let active=0; const queue=[];
+  const pump=()=>{while(active<3&&queue.length){const el=queue.shift();if(!el.isConnected||!el.dataset.bg)continue;active++;const url=el.dataset.bg;const im=new Image();im.onload=()=>{if(el.isConnected){el.style.backgroundImage="linear-gradient(0deg,#160802e8 0%,#16080220 78%),url('"+url+"')";el.classList.add('image-ready');el.removeAttribute('data-bg')}active--;pump()};im.onerror=()=>{active--;el.classList.add('image-ready');pump()};im.src=url;if(im.complete&&im.naturalWidth){im.onload()} }};
+  const imageObserver=new IntersectionObserver((entries,obs)=>{entries.forEach(entry=>{if(entry.isIntersecting){queue.push(entry.target);obs.unobserve(entry.target)}});pump()},{rootMargin:'280px 0px'});
+  cards.forEach(el=>imageObserver.observe(el));
+  const revealObserver=new IntersectionObserver((entries,obs)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in-view');obs.unobserve(entry.target)}})},{rootMargin:'35px 0px'});
+  document.querySelectorAll('.cat').forEach(el=>revealObserver.observe(el));
+}
+function draw(){homeCats.innerHTML=data.map(card).join('');allCats.innerHTML=data.map(card).join('');loadCategoryImages()}
+function go(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.bottom button').forEach(b=>b.classList.toggle('on',b.dataset.go===id));window.scrollTo({top:0,behavior:'smooth'})}
+function nav(id){go(id)}
+function toggleLang(){
+lang=lang==='ar'?'en':'ar';
+document.documentElement.lang=lang;
+document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+langBtn.textContent=lang==='ar'?'English':'العربية';
+brandName.textContent=lang==='ar'?'حدوته':'Hadota Cafe';
+document.querySelectorAll('.signature-name').forEach(el=>el.textContent=lang==='ar'?'حدوته':'Hadota Cafe');
+applyBrandFont();
+heroTitle.textContent=lang==='ar'?'حكايتك الحلوة تبدأ هنا':'Your lovely moment starts here';
+const heroTextEl=document.getElementById('heroText'); if(heroTextEl) heroTextEl.textContent='';
+categoriesHeading.textContent=lang==='ar'?'اكتشف الأقسام':'Explore Categories';
+allLabel.textContent=lang==='ar'?'عرض الكل ←':'View all →';
+allCatsTitle.textContent=lang==='ar'?'كل الأقسام':'All Categories';
+backCats.textContent=lang==='ar'?'← الرئيسية':'← Home';
+backDetail.textContent=lang==='ar'?'← رجوع':'← Back';
+searchTitle.textContent=lang==='ar'?'ابحث في المنيو':'Search the menu';
+searchInput.placeholder=lang==='ar'?'اكتب اسم الصنف...':'Type an item name...';
+document.querySelectorAll('.bottom span').forEach(s=>s.textContent=s.dataset[lang]);
+draw();
+if(window.currentCat){
+  const c=data.find(x=>x.id===window.currentCat);
+  if(c){
+    detailTitle.textContent=nm(c);
+    if(c.id==='dessert'){
+      items.innerHTML='<div class="desserts">'+menuItems(c).map(([ar,en,p,img])=>`<article class="dessert"><img src="${pics[img]}" loading="lazy" decoding="async" alt="${lang==='ar'?ar:(en||'')}"><div>${lang==='ar'?ar:(en||'')}</div></article>`).join('')+'</div>';
+    }else{
+      items.innerHTML='<div class="list">'+menuItems(c).map(([ar,en,p])=>`<div class="item"><span>${lang==='ar'?ar:(en||'')}</span><b class="price">${p==null?'':p+' '+(lang==='ar'?'ج.م':'EGP')}</b></div>`).join('')+'</div>';
+    }
+  }
+}
+if(searchInput.value.trim()) searchItems();
+}
+
+function openCat(id){window.currentCat=id;let c=data.find(x=>x.id===id);detailTitle.textContent=nm(c);if(id==='dessert'){items.innerHTML='<div class="desserts">'+menuItems(c).map(([ar,en,p,img])=>`<article class="dessert"><img src="${pics[img]}" loading="lazy" decoding="async" alt="${lang==='ar'?ar:(en||'')}"><div>${lang==='ar'?ar:(en||'')}</div></article>`).join('')+'</div>'}else{items.innerHTML='<div class="list">'+menuItems(c).map(([ar,en,p])=>`<div class="item"><span>${lang==='ar'?ar:(en||'')}</span><b class="price">${p==null?'':p+' '+(lang==='ar'?'ج.م':'EGP')}</b></div>`).join('')+'</div>'}go('detail')}
+function searchItems(){let q=searchInput.value.trim().toLowerCase(),out=[];data.forEach(c=>menuItems(c).forEach(it=>{if(q&&(it[0].toLowerCase().includes(q)||it[1].toLowerCase().includes(q)))out.push([it,c])}));searchResults.innerHTML=out.map(([it,c])=>`<div class="item"><span>${lang==='ar'?it[0]:(it[1]||'')}<small style="display:block;color:#9a8876;margin-top:4px">${nm(c)}</small></span><b class="price">${it[2]==null?'':it[2]+' '+(lang==='ar'?'ج.م':'EGP')}</b></div>`).join('')||(lang==='en'?'<div class="item">No results found</div>':'<div class="item">لا توجد نتائج</div>')}
+draw();
+</script><!-- Service worker intentionally omitted in this isolated demo to avoid affecting the live site's cache. --></body></html>
