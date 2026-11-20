@@ -25,32 +25,21 @@ self.addEventListener("fetch", event => {
 
   const isImage =
     request.destination === "image" ||
-    /\.(?:avif|gif|jpe?g|png|webp|svg)$/i.test(url.pathname);
+    /\\.(?:avif|gif|jpe?g|png|webp|svg)$/i.test(url.pathname);
 
   if (!isImage) return;
 
-  const cacheReady = caches.open(CACHE_NAME).then(async cache => ({
-    cache,
-    cached: await cache.match(request)
-  }));
+  // Cache-first: serve saved local images immediately and avoid downloading
+  // the same files again on every visit. New images are cached on first load.
+  event.respondWith((async () => {
+    const cache = await caches.open(CACHE_NAME);
+    const cached = await cache.match(request);
+    if (cached) return cached;
 
-  const networkRefresh = cacheReady.then(async ({ cache, cached }) => {
-    try {
-      const response = await fetch(request);
-      if (response && response.ok) {
-        await cache.put(request, response.clone()).catch(() => {});
-      }
-      return response;
-    } catch (error) {
-      if (cached) return cached;
-      throw error;
+    const response = await fetch(request);
+    if (response && response.ok) {
+      await cache.put(request, response.clone()).catch(() => {});
     }
-  });
-
-  event.respondWith(
-    cacheReady.then(({ cached }) => cached || networkRefresh)
-  );
-
-  // Keep the background refresh alive when a cached image is returned.
-  event.waitUntil(networkRefresh.then(() => undefined).catch(() => undefined));
+    return response;
+  })());
 });
