@@ -25,7 +25,7 @@ self.addEventListener("fetch", event => {
 
   const isImage =
     request.destination === "image" ||
-    /\\.(?:avif|gif|jpe?g|png|webp|svg)$/i.test(url.pathname);
+    /\.(?:avif|gif|jpe?g|png|webp|svg)$/i.test(url.pathname);
 
   if (!isImage) return;
 
