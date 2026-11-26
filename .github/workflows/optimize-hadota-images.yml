@@ -1,0 +1,67 @@
+name: Optimize Hadota category images
+
+on:
+  push:
+
+permissions:
+  contents: write
+
+jobs:
+  optimize-images:
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Convert approved images to WebP
+        run: |
+          python -m pip install --quiet Pillow
+          python - <<'PY'
+          from PIL import Image
+          from pathlib import Path
+
+          conversions = {
+              "assets/menu/category-hot.png": "assets/menu/category-hot.webp",
+              "assets/menu/mangoKiwiBanana.png": "assets/menu/mangoKiwiBanana.webp",
+          }
+
+          for source, target in conversions.items():
+              src = Path(source)
+              dst = Path(target)
+              if not src.is_file():
+                  raise SystemExit(f"Missing original image: {source}")
+              with Image.open(src) as image:
+                  image.save(dst, "WEBP", quality=85, method=6)
+              print(f"{source}: {src.stat().st_size} bytes -> {dst.stat().st_size} bytes")
+          PY
+      - name: Point the menu to WebP copies
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path("Hadota_Cafe1-Final-Cardamon-Coffee-Fixed-1.html")
+          html = path.read_text(encoding="utf-8")
+          replacements = {
+              "./assets/menu/category-hot.png": "./assets/menu/category-hot.webp",
+              "./assets/menu/mangoKiwiBanana.png": "./assets/menu/mangoKiwiBanana.webp",
+          }
+          for old, new in replacements.items():
+              count = html.count(old)
+              if count != 1:
+                  raise SystemExit(f"Expected exactly one reference to {old}, found {count}")
+              html = html.replace(old, new)
+          path.write_text(html, encoding="utf-8")
+          PY
+      - name: Commit optimized copies and HTML references
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/menu/category-hot.webp assets/menu/mangoKiwiBanana.webp Hadota_Cafe1-Final-Cardamon-Coffee-Fixed-1.html
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "Add WebP copies for heavy menu images [skip ci]"
+          git push
