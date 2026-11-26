@@ -236,12 +236,12 @@ const descriptions={cold:'COLD & REFRESHING',juice:'FRESH JUICES',coffee:'COFFEE
 function nm(c){return lang==='en'?(c.en||names.en[c.id]||''):(c.ar||names.ar[c.id]||'')}
 function menuItems(c){return lang==='en'?c.items.filter(it=>!['Qass & Salloum Shisha','Fenugreek','Fenugreek with Milk'].includes(it[1])):c.items}
 const categoryPhotos={
-cold:'./assets/menu/category-cold.jpg',
+cold:'./assets/menu/category-cold.webp',
 juice:'https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=1000&q=90',
 coffee:'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1100&q=85',
 hot:'./assets/menu/category-hot.webp',
 mix:pics.mangoKiwiBanana,
-shisha:'./assets/menu/category-shisha.jpg',
+shisha:'./assets/menu/category-shisha.webp',
 dessert:'https://canelitacheesecake.com/cdn/shop/files/Trozodepasteldeterciopelorojo.png?v=1776101792'
 };
 function card(c){let img=categoryPhotos[c.id]||'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=90';let title=lang==='en'?(c.en||names.en[c.id]||''):(c.ar||names.ar[c.id]||'');let subtitle=lang==='en'?(descriptions[c.id]||''):'';return `<button class="cat" data-bg="${img}" onclick="openCat('${c.id}')" style="background-image:linear-gradient(0deg,#160802e8 0%,#16080220 78%);background-size:cover;background-position:center;background-repeat:no-repeat"><div class="photo"><div><b>${title}</b>${subtitle?`<small>${subtitle}</small>`:''}</div></div></button>`}
