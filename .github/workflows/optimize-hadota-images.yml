@@ -52,10 +52,17 @@ jobs:
               "./assets/menu/category-cold.jpg": "./assets/menu/category-cold.webp",
           }
           for old, new in replacements.items():
-              count = html.count(old)
-              if count != 1:
-                  raise SystemExit(f"Expected exactly one reference to {old}, found {count}")
-              html = html.replace(old, new)
+              old_count = html.count(old)
+              new_count = html.count(new)
+              if old_count == 1 and new_count == 0:
+                  html = html.replace(old, new)
+              elif old_count == 0 and new_count == 1:
+                  print(f"Already optimized: {new}")
+              else:
+                  raise SystemExit(
+                      f"Expected one old or one new reference for {old}; "
+                      f"found old={old_count}, new={new_count}"
+                  )
           path.write_text(html, encoding="utf-8")
           PY
       - name: Commit optimized copies and HTML references
