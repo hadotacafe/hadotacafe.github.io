@@ -35,7 +35,7 @@ jobs:
               if not src.is_file():
                   raise SystemExit(f"Missing original image: {source}")
               with Image.open(src) as image:
-                  image.save(dst, "WEBP", quality=85, method=6)
+                  image.save(dst, "WEBP", quality=80, method=6)
               print(f"{source}: {src.stat().st_size} bytes -> {dst.stat().st_size} bytes")
           PY
       - name: Point the menu to WebP copies
